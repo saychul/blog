@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>블로그 포스트</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← 목록으로 돌아가기</a>
+        <article id="post-content">
+            <!-- 포스트 내용이 여기에 동적으로 추가됩니다 -->
+        </article>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        async function displayPost() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = parseInt(urlParams.get('id'));
+            
+            if (postId !== null && !isNaN(postId)) {
+                const posts = await loadAllPosts();
+                const post = posts[postId];
+                
+                if (post) {
+                    const postContent = document.getElementById('post-content');
+                    document.title = post.title;
+                    
+                    postContent.innerHTML = `
+                        <h1>${post.title}</h1>
+                        <div class="post-date">${post.date}</div>
+                        <div class="post-content">${post.content}</div>
+                    `;
+                } else {
+                    window.location.href = 'index.html';
+                }
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+
+        displayPost();
+    </script>
+</body>
+</html> 

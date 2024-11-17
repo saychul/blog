@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>나의 블로그</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <div class="container">
+        <header>
+            <h1>나의 블로그</h1>
+        </header>
+        <main id="posts-list">
+            <!-- 포스트 목록이 여기에 동적으로 추가됩니다 -->
+        </main>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        async function displayPosts() {
+            const postsList = document.getElementById('posts-list');
+            const posts = await loadAllPosts();
+            
+            posts.forEach((post, index) => {
+                const postElement = document.createElement('article');
+                postElement.className = 'post-item';
+                postElement.innerHTML = `
+                    <h2><a href="post.html?id=${index}">${post.title}</a></h2>
+                    <div class="post-date">${post.date}</div>
+                    <div class="post-content">${post.content.substring(0, 100)}...</div>
+                `;
+                postsList.appendChild(postElement);
+            });
+        }
+
+        displayPosts();
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+/* index.html 스타일 */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.post-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.post-date {
+    color: #666;
+    font-size: 0.9em;
+}
+.post-content {
+    margin-top: 10px;
+    white-space: pre-line;
+}
+
+/* post.html 스타일 */
+.post-content {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #333;
+    text-decoration: none;
+}
+.back-link:hover {
+    text-decoration: underline;
+}
